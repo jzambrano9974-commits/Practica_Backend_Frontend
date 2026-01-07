@@ -366,7 +366,7 @@ async function crearAdminPorDefecto() {
     const check = await pool.query("SELECT * FROM usuarios WHERE cedula = $1", [cedulaAdmin]);
     
     if (check.rows.length === 0) {
-      console.log("⚠️ Usuario 'admin' no existe. Creándolo...");
+      console.log("Usuario 'admin' no existe. Creándolo...");
       
       // Encriptamos la contraseña "admin"
       const salt = await bcrypt.genSalt(10);
@@ -378,9 +378,9 @@ async function crearAdminPorDefecto() {
         [cedulaAdmin, nombreAdmin, claveEncriptada]
       );
       
-      console.log(`✅ Usuario creado con éxito: User: ${cedulaAdmin} | Pass: ${claveAdmin}`);
+      console.log(`Usuario creado con éxito: User: ${cedulaAdmin} | Pass: ${claveAdmin}`);
     } else {
-      console.log("ℹ️ El usuario 'admin' ya existe. Todo listo.");
+      console.log("ℹEl usuario 'admin' ya existe. Todo listo.");
     }
   } catch (error) {
     console.error("Error creando admin:", error);
